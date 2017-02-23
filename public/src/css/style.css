@@ -1,0 +1,251 @@
+body{
+  font-family: 'Raleway', sans-serif;
+  font-size: 12pt;
+  color: rgb(47, 47, 47);
+  margin: 0px;
+}
+.brand{
+  padding-top:20px;
+  padding-left:100px;
+}
+.brand img{
+  width:160px;
+}
+
+.top{
+
+    background-image: url('../img/jup.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 700px;
+    width: 100%;
+    background-size: cover;
+}
+.kirim-jdl{
+  text-align: center;
+  font-size: 20pt;
+  letter-spacing: 5px;
+  padding-top: 60px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+
+}
+.kirim-jdl-manusia{
+  text-align: center;
+  font-size: 20pt;
+  letter-spacing: 5px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  padding-top: -30px;
+}
+.kirim-text{
+  padding-left: 150px;
+  padding-right: 150px;
+  text-align: center;
+  font-size: 11pt;
+}
+.yutub-jdl{
+  text-align: center;
+  font-size: 20pt;
+  padding-top:100px;
+  padding-bottom: 40px;
+  text-transform: uppercase;
+}
+.yutub-text{
+  padding-left: 300px;
+  padding-right: 300px;
+  text-align: center;
+  font-size: 11pt;
+  padding-bottom: 40px;
+}
+.sub-jdl{
+  font-size: 13pt;
+}
+.scrolled{
+  background-color:rgba(#ffffff, 0.88);
+}
+.bg-grey{
+  background-color: #e8e8e8;
+}
+.welcome-grey{
+  background-color: #e8e8e8;
+}
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.welcome{
+  background-color: #05756a;
+  color: #a1d8cf;
+
+  -webkit-box-shadow: 10px 0 30px -2px #888;
+          box-shadow: 10px 0 30px -2px #888;
+  z-index: 1;
+}
+.wel-jdl{
+  font-size: 24pt;
+  color: #fff;
+  padding-top: 150px;
+}
+.wel-sub{
+  font-size: 15pt;
+  padding-top: 20px;
+}
+.wel-mini-sub{
+  font-size: 12pt;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+.wel-mini-sub a{
+  color: #bcf9ef;
+  text-decoration: none;
+  transition: 0.4s;
+}
+.wel-mini-sub a:hover{
+  color: #fff;
+}
+.log-jdl{
+    font-size: 15pt;
+    padding-top: 260px;
+    color:rgb(34, 34, 34);
+    padding-bottom: 30px;
+}
+.reg-jdl{
+    font-size: 15pt;
+    padding-top: 210px;
+    color:rgb(34, 34, 34);
+    padding-bottom: 30px;
+}
+.footer{
+  background-color: #05756a;
+  text-align: center;
+}
+.footer-text{
+  color:#fff;
+  font-size: 12pt;
+  padding-top: 40px;
+}
+.footer-text a{
+  color : #fff;
+  text-decoration: none;
+}
+.footer a:hover{
+  color:rgb(186, 186, 186);
+}
+.border{
+    display: inline-block;
+    padding: 4px 15px;
+    color: #05756a;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+            margin-top: -7px;
+    border: 2px solid #05756a;
+    font-size: 14pt;
+    text-transform: uppercase;
+
+}
+.border-white{
+    display: inline-block;
+    padding: 4px 15px;
+    color: #05756a;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+            margin-top: -7px;
+    background-color: #fff;
+    font-size: 14pt;
+    font-weight: bolder;
+    text-transform: uppercase;
+
+}
+.selain-border{
+  font-size: 10pt;
+}
+
+.border:hover{
+  background-color:  #05756a !important;
+  color: #fff;
+  transition: 0.5s;
+}
+.desc-qkr{
+  padding-bottom: 50px;
+}
+div.row.pc{
+  display:none;
+}
+div.row.phone{
+  display:none;
+}
+.pelajari{
+  text-align:center;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+@media (min-width: 768px) {
+  .bg-grey iframe{
+    width:800px;
+    height:360px;
+
+  }
+
+  div.row.pc{
+    display:block;
+  }
+}
+@media (max-width: 768px) {
+  body{
+    font-size: 11pt;
+  }
+  .bg-grey iframe{
+    width:auto;
+    height:200px;
+  }
+  .kirim-text{
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+  }
+  .desc-qkr{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .brand{
+    padding-top:15px;
+    padding-left:10px;
+  }
+  .brand img{
+    width:140px;
+  }
+
+  div.row.phone{
+    display:block;
+  }
+  .yutub-text{
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    font-size: 11pt;
+    padding-bottom: 40px;
+  }
+  ul.nav.navbar-nav.navbar-right.animated{
+    animation: none;
+  }
+
+}
