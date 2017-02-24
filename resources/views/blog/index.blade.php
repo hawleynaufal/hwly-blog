@@ -31,7 +31,7 @@
       </tr>
       <a href="{{ route('blog.create')}}" class="btn btn-info pull-right">Create New Data</a><br><br>
       <?php $no=1; ?>
-      @foreach($blogs as $blog)
+      @foreach($post as $blog)
       <tr>
         <td width="5%">{{$no++}}</td>
         <td width="20%">{{$blog->title}}</td>
@@ -48,11 +48,11 @@
             <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this ?');" name="name" value="delete">
           </form>
           @endforeach
-            {!! $blogs->links() !!}
+
         </td>
       </tr>
     </table>
-
+    {{$post->links()}}
 
 
   </div>

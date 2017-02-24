@@ -20,10 +20,10 @@
         <input type="text" name="title" class="form-control" placeholder="Enter Title Here">
         {!! $errors->first('title','<p class="help-block">:message</p>') !!}
       </div>
-      <div class="form-group{{($errors->has('title'))? $errors->first('title') : ''}}">
+      <div class="form-group{{($errors->has('slug'))? $errors->first('title') : ''}}">
         <label>Slug:</label>
         <input type="text" name="slug" class="form-control " placeholder="Enter Slug Here" required="" minlength="5" maxlength="255" >
-        {!! $errors->first('title','<p class="help-block">:message</p>') !!}
+        {!! $errors->first('slug','<p class="help-block">:message</p>') !!}
       </div>
 
       <!--<div class="content">

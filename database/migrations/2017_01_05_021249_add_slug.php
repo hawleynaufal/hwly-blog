@@ -14,7 +14,7 @@ class AddSlug extends Migration
     public function up()
     {
       Schema::table('blog_post',function (Blueprint $table){
-        $table->string('slug')->after('title');
+        //$table->string('slug')->after('title');
       });
     }
 
@@ -26,7 +26,7 @@ class AddSlug extends Migration
     public function down()
     {
       Schema::table('blog_post',function (Blueprint $table){
-        $table->dropColumn('slug');
+        //$table->dropColumn('slug');
       });
     }
 }

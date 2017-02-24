@@ -1,5 +1,5 @@
 @extends('master')
-
+@section('title','Blog Anu')
 @section('content')
 <div class="container">
   <div class="row">
@@ -10,10 +10,15 @@
     </div>
     <div class="col-md-2"></div>
   </div>
+@if(Auth::check())
+<h4><b><a href="/blog">Manage Post</a></b></h4>
+@endif
+
   @foreach($shows as $show)
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
+
       <div class="jdl page-header">{{$show->title}}</div>
       <div class="isi">
         {!! str_limit($show->description, $limit= 300 , $end= '...... ')!!}

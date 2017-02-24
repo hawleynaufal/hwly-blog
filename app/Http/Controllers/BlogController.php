@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Blog;
 use Session;
+use Auth;
 
 class BlogController extends Controller
 {
@@ -21,11 +22,13 @@ class BlogController extends Controller
       //$blogs= Blog::all();
 
       //return view('blog.index',['blogs' => $blogs]);
-
+      $loggedInUserId=Auth::user()->id;
       $search=\Request::get('search');
 
-      $blogs= Blog::where('title','like','%'.$search.'%')->orderBy('id')->paginate(4);
-      return view('blog.index',['blogs' => $blogs]);
+
+      //$post=Blog::all()->where('user_id','=',$loggedInUserId);
+      $post= Blog::where('title','like','%'.$search.'%')->where('user_id','=',$loggedInUserId)->orderBy('id')->paginate(4);
+      return view('blog.index',['post' => $post ]);
     }
 
 
@@ -61,6 +64,7 @@ class BlogController extends Controller
         $blog = new blog;
         $blog ->title =$request->title;
         $blog ->slug =$request->slug;
+        $blog->user_id=Auth::id();
         $blog ->description =$request->description;
         $blog->save();
 

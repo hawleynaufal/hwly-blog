@@ -19,7 +19,6 @@
           <input type="text" name="title" class="form-control" value="{{$blog->title}}" placeholder="Enter Title Here">
           {!! $errors->first('title','<p class="help-block">:message</p>') !!}
         </div>
-
         <div class="form-group{{($errors->has('title'))? $errors->first('title') : ''}}">
           <label>Slug:</label>
           <input type="text" name="slug" class="form-control " value="{{$blog->slug}}"placeholder="Enter Slug Here" required="" minlength="5" maxlength="255" >
