@@ -4,9 +4,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-.glyphicon .glyphicon-user {
-    font-size: 50px !important;
-}
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -4595,8 +4592,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color:transparent;
-  
+  background-color: #222;
+  border-color: #080808;
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;
@@ -4964,7 +4961,7 @@ a.badge:focus {
 .jumbotron {
   padding-top: 30px;
   padding-bottom: 30px;
-  
+  margin-bottom: 30px;
   color: inherit;
   background-color: #eee;
 }

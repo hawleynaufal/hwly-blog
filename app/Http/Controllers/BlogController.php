@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Blog;
+use Storage;
+use Image;
 use Session;
 use Auth;
 
@@ -24,7 +26,6 @@ class BlogController extends Controller
       //return view('blog.index',['blogs' => $blogs]);
       $loggedInUserId=Auth::user()->id;
       $search=\Request::get('search');
-
 
       //$post=Blog::all()->where('user_id','=',$loggedInUserId);
       $post= Blog::where('title','like','%'.$search.'%')->where('user_id','=',$loggedInUserId)->orderBy('id')->paginate(4);
@@ -58,6 +59,7 @@ class BlogController extends Controller
           'title'=>'required',
           'slug'=>'required|alpha_dash',
           'description'=>'required',
+          'image' => 'sometimes|image',
 
         ]);
         //create new data
@@ -66,9 +68,18 @@ class BlogController extends Controller
         $blog ->slug =$request->slug;
         $blog->user_id=Auth::id();
         $blog ->description =$request->description;
+
+
+        if ($request->hasFile('image')) {
+          $image = $request->file('image');
+          $filename = time() . '.' . $image->getClientOriginalExtension();
+          $location = public_path('images/post/' . $filename);
+          Image::make($image)->save($location);
+
+          $blog->image = $filename;
+        }
+
         $blog->save();
-
-
         return redirect()->route('blog.index')->with('alert-success','Data Has been Saved');
     }
 
@@ -130,6 +141,7 @@ class BlogController extends Controller
             'title'=>'required',
             'slug' => 'required|alpha_dash|max:255|min:5|unique:blog_post,slug',
             'description'=>'required',
+            'image' => 'image',
           ]);
         }
 
@@ -138,8 +150,21 @@ class BlogController extends Controller
         $blog ->title =$request->title;
         $blog ->slug =$request->slug;
         $blog ->description =$request->description;
-        $blog ->save();
 
+        if ($request->hasfile('image')) {
+          //add new database
+          $image = $request->file('image') ;
+          $filename = time() . '.' . $image->getClientOriginalExtension();
+          $location = public_path('images/post/' . $filename);
+          Image::make($image)->save($location);
+          $oldFilename = $blog->image;
+          //udpate the database
+          $blog->image = $filename;
+          //Delete the old photo
+          Storage::delete($oldFilename);
+        }
+
+        $blog ->save();
         return redirect()->route('blog.index')->with('alert-success','Data Has been Saved');
         Session::flash('success','The Post has been saved');
 
@@ -157,6 +182,7 @@ class BlogController extends Controller
     {
         //delete data
           $blog = Blog::findOrFail($id);
+          Storage::delete($blog->image);
           $blog ->delete();
           return redirect()->route('blog.index')->with('alert-success','Data Has been Deleted');
     }

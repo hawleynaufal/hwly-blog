@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-      <form class="" action="{{route('blog.update',$blog->id)}}" method="post">
+      <form class="" action="{{route('blog.update',$blog->id)}}" method="post" enctype="multipart/form-data">
         <input name="_method" type="hidden" value="PATCH">
         {{csrf_field()}}
         <div class="form-group{{($errors->has('title'))? $errors->first('title') : ''}}">
@@ -22,7 +22,11 @@
         <div class="form-group{{($errors->has('title'))? $errors->first('title') : ''}}">
           <label>Slug:</label>
           <input type="text" name="slug" class="form-control " value="{{$blog->slug}}"placeholder="Enter Slug Here" required="" minlength="5" maxlength="255" >
-          {!! $errors->first('title','<p class="help-block">:message</p>') !!}
+          {!! $errors->first('slug','<p class="help-block">:message</p>') !!}
+        </div>
+        <div class="form-group">
+            <label>Selecet Image to upload :</label>
+            <input type="file" name="image" id="file"></input>
         </div>
 
         <div class="form-group{{($errors->has('description'))? $errors->first('title') : ''}}">

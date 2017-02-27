@@ -19,7 +19,8 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
 
-      <div class="jdl page-header">{{$show->title}}</div>
+      <div class="jdl page-header"><a href="../post/{{ $show->slug }}">{{$show->title}}</a></div>
+
       <div class="isi">
         {!! str_limit($show->description, $limit= 300 , $end= '...... ')!!}
         <!--{!!$show->description!!} <a href='.url("/".$post->slug). -->
@@ -32,6 +33,6 @@
 
 
       @endforeach
-      {{$shows->links()}}
 </div>
+{{$shows->links()}}
 @stop
