@@ -7,8 +7,12 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
+    <link href="vendor/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('vendor/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('src/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/css/font-awesome.min.css')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('src/img/icon.png') }}" />
     <!--<script src="{{ asset('tinymce/js/tinymce/tinymce.min.js')}}"></script>-->
     <script src="http://cloud.tinymce.com/stable/tinymce.min.js"></script>
     <script >
@@ -49,61 +53,83 @@
 
   <body>
 
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-10">
 
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Blog Gue</a>
-      </div>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="" style="padding-left:150px;padding-right:150px;">
+                <div class="navbar-header">
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="nav navbar-nav navbar-right">
-          @if (Route::has('login'))
-          @if (Auth::guest())
-              <li><a href="{{ url('/login') }}">Login</a></li>
-          @else
-          {{ Auth::user()->name }}
-              <li>
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-                  <a href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                      Logout
-                  </a>
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="../src/img/logo.png" alt="" width="23%">
+                    </a>
+                </div>
 
-                  <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                      {{ csrf_field() }}
-                  </form>
-              </li>
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                  <li><a href="/blog/create">Write a post</a></li>
+                  @if(Auth::guest())
+                    <li><a href="{{ url('/login') }}" class="a-blue">Sign In / Sign Up</a></li>
+                  @else
+                    <li class="dropdown">
+                        <a href="#" class="a-blue dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
 
-          @endif
-          @endif
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                  @endif
+                </ul>
+              </div>
+              <hr class="header">
+            </div>
+        </nav>
 
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    <!-- /.container-fluid -->
-    </div>
-    <div class="col-md-1">
-    </div>
-  </nav>
-
-
-    <div class="container">
-      <div class="row">
         @yield('content')
-      </div>
-    </div>
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendor/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+    function checkScroll(){
+      var startY = $('.navbar').height() * 1; //The point where the navbar changes in px
+
+      if($(window).scrollTop() > startY){
+          $('.navbar-bwh  ').addClass("navbar-fixed-top ");
+          $('.user  ').addClass("no-hidden ");
+      }else{
+          $('.navbar-bwh ').removeClass("navbar-fixed-top");
+          $('.user  ').removeClass("no-hidden ");
+      }
+    }
+
+    if($('.navbar-bwh').length > 0){
+      $(window).on("scroll load resize", function(){
+          checkScroll();
+            });
+    };
+    </script>
   </body>
 </html>

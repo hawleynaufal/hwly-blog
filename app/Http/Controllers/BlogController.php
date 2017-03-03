@@ -32,6 +32,13 @@ class BlogController extends Controller
       return view('blog.index',['post' => $post ]);
     }
 
+    public function getSingle($slug){
+      // detch from database
+      $blog = Blog::where('slug' , '=', $slug)->first();
+      $data= Blog::all();
+        //return view
+      return view ('post.single')->with('data', $blog);
+    }
 
 
 
@@ -82,6 +89,10 @@ class BlogController extends Controller
         $blog->save();
         return redirect()->route('blog.index')->with('alert-success','Data Has been Saved');
     }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display the specified resource.
@@ -89,19 +100,12 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    {
-      $shows= Blog::paginate(3);
 
-      return view('blog.show',['shows' => $shows]);
-
-
-    }
     public function single()
     {
       $shows= Blog::paginate(3);
 
-      return view('blog.single',['singles' => $singles]);
+      return view('post.single',['singles' => $singles]);
 
 
     }
@@ -148,6 +152,7 @@ class BlogController extends Controller
         //create new data
         $blog = Blog::findOrFail($id);
         $blog ->title =$request->title;
+        $blog->visit = $request->visitCount;
         $blog ->slug =$request->slug;
         $blog ->description =$request->description;
 

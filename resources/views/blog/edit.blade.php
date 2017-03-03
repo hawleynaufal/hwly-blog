@@ -25,6 +25,10 @@
           {!! $errors->first('slug','<p class="help-block">:message</p>') !!}
         </div>
         <div class="form-group">
+          <label>Category :</label>
+          <input type="text" name="category"   class="form-control  " value="{{$blog->slug}}"placeholder="Enter Slug Here" required="" minlength="5" maxlength="255" disabled>
+        </div>
+        <div class="form-group">
             <label>Selecet Image to upload :</label>
             <input type="file" name="image" id="file"></input>
         </div>

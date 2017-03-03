@@ -1,11 +1,13 @@
 @extends('master')
+@section('title','Hwly-blog | Manage Post' )
   @section('content')
+
   <div class="form-group row add">
     <div class="col-md-6">
       <h1>Postingan</h1>
     </div>
     <div class="col-md-6">
-      <form class="navbar-form navbar-left" url="blog" action="\blog" method="get" role="search">
+      <form class="navbar-form navbar-left" url="" action="\blog" method="get" role="search">
             <div class="input-group">
           <input type="text" name="search" class="form-control"placeholder="search ..." >
           <span class="input-group-btn">

@@ -17,8 +17,7 @@
 
 Route::group(['middleware' => ['web']],function(){
   Route::resource('blog','BlogController');
-  Route::get('/home', 'BlogController@index');
-  Route::get('/', 'BlogController@show');
+  Route::resource('/', 'PostController');
   Route::get('/single', 'BlogController@single');
   Route::get('post/{slug}',['as'=>'post.single','uses'=> 'PostController@getSingle'] ) ->where('slug' ,'[\w\d\-\_]+');
   //comments

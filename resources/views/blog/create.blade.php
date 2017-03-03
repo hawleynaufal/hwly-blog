@@ -26,6 +26,17 @@
         {!! $errors->first('slug','<p class="help-block">:message</p>') !!}
       </div>
       <div class="form-group">
+        <label for="sel1">Category :</label>
+        <select class="form-control" id="sel1">
+          <option>Narasi</option>
+          <option>Tips</option>
+          <option>Motivation</option>
+          <option>Love</option>
+          <option>Traveller</option>
+          <option>Childhood</option>
+        </select>
+      </div>
+      <div class="form-group">
           <label>Selecet Image to upload :</label>
           <input type="file" name="image" id="file"></input>
       </div>

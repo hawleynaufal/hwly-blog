@@ -12,8 +12,8 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/css/font-awesome.min.css') }}">
 
     <!-- Scripts -->
     <script>
@@ -84,6 +84,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="vendor/js/app.js"></script>
 </body>
 </html>

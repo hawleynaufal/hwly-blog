@@ -1,4 +1,5 @@
 @extends('master')
+@section('title','Hwly-blog ' )
 @section('content')
   <div class="row">
     <div class="col-md-2"></div>
@@ -10,7 +11,7 @@
       <div class="isi">
         {!!$data->description!!}
       </div>
-      {{$create_post}}
+
       <hr>
       <h3>{{$data->comments()->count()}} Comments</h3>
         <?php $i=0; ?>
@@ -55,4 +56,5 @@
     </div>
     <div class="col-md-2"></div>
   </div>
+
 @stop
